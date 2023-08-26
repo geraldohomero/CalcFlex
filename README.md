@@ -1,4 +1,4 @@
-# App de Calculadora Flex
+# App Calculadora Flex
 
 >Feito em React Native
 
