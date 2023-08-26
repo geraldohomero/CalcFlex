@@ -1,25 +1,33 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React, {useState} from 'react';
+import { View } from 'react-native';
+import { Appbar, TextInput, Button } from 'react-native-paper';
 
-export default function App() {
+const App = () => {
+
+  const [gas, setGas] = useState('');
+  const [eta, setEta] = useState('');
+
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>Hello, world!</Text>
-      <StatusBar style="light" />
-    </View>
+    <>
+      <Appbar.Header>
+        <Appbar.Content title="Calculadora Flex" subtitle="Etanol ou Gasolina?"/>
+      </Appbar.Header>
+      <TextInput
+        label="Preço da Gasolina"
+        value={gas}
+        onChangeText={text => setText(text)}
+      />
+        <TextInput
+        label="Preço do Etanol"
+        value={eta}
+        onChangeText={text => setEta(text)}
+      />
+      <Button mode="contained" onPress={() => console.log('Pressed')}>
+        Calcular
+      </Button>
+  </>
+
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#151515',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  text: {
-    color: 'white',
-  }
-});
-
-
+export default App;
