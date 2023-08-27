@@ -26,7 +26,7 @@ const App = () => {
             value={eta}
             onChangeText={text => setEta(text)}
           />
-          <Button icon="" mode="contained" onPress={() => console.log('Pressed')}>
+          <Button icon="gas-station" mode="contained" onPress={() => console.log('Pressed')}>
             Calcular
           </Button>
           <Text style={styles.text}>Resultado: {gas}</Text>
