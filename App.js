@@ -6,6 +6,7 @@ const App = () => {
 
   const [gas, setGas] = useState('');
   const [eta, setEta] = useState('');
+  const [res, setRes] = useState('');
 
   return (
     <View style={styles.container}>
@@ -17,7 +18,7 @@ const App = () => {
             style={styles.input}
             label="Preço da Gasolina"
             value={gas}
-            onChangeText={text => setText(text)}
+            onChangeText={text => setGas(text)}
           />
             <TextInput
             style={styles.input}
@@ -28,6 +29,7 @@ const App = () => {
           <Button mode="contained" onPress={() => console.log('Pressed')}>
             Calcular
           </Button>
+          <Text style={styles.text}>Resultado: {gas}</Text>
         </View>
   </View>
 
@@ -44,6 +46,10 @@ const styles = StyleSheet.create({
   },
   input: {
     marginBottom: 10
+  },
+  text: {
+    textAlign: 'center',
+    marginTop: 10,
   }
 });
 
