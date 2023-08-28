@@ -8,7 +8,7 @@ const Body = ({children}) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#d8d8d8',
+        backgroundColor: '#151515',
         margin : 10,
       },
 });
