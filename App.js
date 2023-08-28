@@ -1,6 +1,10 @@
 import React, {useState} from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { Appbar, TextInput, Button } from 'react-native-paper';
+import { TextInput, Button } from 'react-native-paper';
+
+import Container from './src/components/Container';
+import Header from './src/components/Header';
+import Body from './src/components/Body';
 
 const App = () => {
 
@@ -9,11 +13,9 @@ const App = () => {
   const [res, setRes] = useState('');
 
   return (
-    <View style={styles.container}>
-      <Appbar.Header>
-        <Appbar.Content title="Calculadora Flex" subtitle="Etanol ou Gasolina?"/>
-      </Appbar.Header>
-        <View style={styles.body}>      
+    <Container>
+      <Header title={'Calculadora Flex'}/>
+        <Body>
           <TextInput
             style={styles.input}
             label="Preço da Gasolina"
@@ -29,18 +31,14 @@ const App = () => {
           <Button icon="gas-station" mode="contained" onPress={() => console.log('Pressed')}>
             Calcular
           </Button>
-          <Text style={styles.text}>Resultado: {gas}</Text>
-        </View>
-  </View>
+          <Text style={styles.text}>Resultado: {res}</Text>
+        </Body>
+  </Container>
 
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#FFF',
-  },
   body: {
     margin: 10,
   },
