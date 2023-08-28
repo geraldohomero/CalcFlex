@@ -5,6 +5,7 @@ import { TextInput, Button } from 'react-native-paper';
 import Container from './src/components/Container';
 import Header from './src/components/Header';
 import Body from './src/components/Body';
+import Input from './src/components/Input';
 
 const App = () => {
 
@@ -16,14 +17,12 @@ const App = () => {
     <Container>
       <Header title={'Calculadora Flex'}/>
         <Body>
-          <TextInput
-            style={styles.input}
+          <Input
             label="Preço da Gasolina"
             value={gas}
             onChangeText={text => setGas(text)}
           />
-            <TextInput
-            style={styles.input}
+            <Input
             label="Preço do Etanol"
             value={eta}
             onChangeText={text => setEta(text)}
@@ -39,12 +38,6 @@ const App = () => {
 }
 
 const styles = StyleSheet.create({
-  body: {
-    margin: 10,
-  },
-  input: {
-    marginBottom: 10
-  },
   text: {
     textAlign: 'center',
     marginTop: 10,
