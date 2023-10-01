@@ -6,6 +6,8 @@ import Header from './../components/Header';
 import Container from '../components/Container';
 import Body from '../components/Body';
 
+import { useNavigation } from '@react-navigation/native';
+
 const DATA = [
     {
       id: 1,
@@ -35,6 +37,8 @@ const DATA = [
 
 const Gastos = () => {
 
+  const navigation = useNavigation();
+
     const renderItem = ({ item }) => (
           <List.Item style={styles.ListItem}
               title={"R$ " + item.valor.toFixed(2) + " (R$" + item.preco.toFixed(2)+")"}
@@ -56,7 +60,7 @@ const Gastos = () => {
             <FAB
                 style={styles.fab}
                 icon="plus"
-                onPress={() => console.log('Pressed')}
+                onPress={() => navigation.navigate('Abastecimento')}
             />
             </Body>
         </Container>
