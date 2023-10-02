@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, StyleSheet, Text } from 'react-native';
-import { RadioButton } from 'react-native-paper';
-
+import { Button, RadioButton, TextInput, Appbar } from 'react-native-paper';
+import Input from '../components/Input';
 import Header from './../components/Header';
 import Container from '../components/Container';
 import Body from '../components/Body';
@@ -12,13 +12,26 @@ const Abastecimento = () => {
 
     const navigation = useNavigation();
     const [tipo, setTipo] = useState('gas');
+    const [preco, setPreco] = useState('');
+    const [valor, setValor] = useState('');
+    const [odometro, setOdometro] = useState('');
+    const [data, setData] = useState('');
+
+    const handleSave = () => {
+        console.log('Salvando...');
+    }
+
+    const handleDelete = () => {
+        console.log('Deletando...');
+    }
 
     return (
         <Container>
             <Header
-                title={'Abastecimento'}
-                goBack={() => navigation.goBack()}
-            />
+                title={'Abastecimento'} goBack={() => navigation.goBack()}>
+                <Appbar.Action icon="content-save" onPress={handleSave} />
+                <Appbar.Action icon="delete" onPress={handleDelete} />
+                </Header>
             <Body>
                 <View style={styles.containerRadio}>
                     <View style={styles.containerRadioItem}>
@@ -40,6 +53,47 @@ const Abastecimento = () => {
                         <Text>Etanol</Text>
                     </View>
                 </View>
+
+                <Input
+                    label="Data"
+                    value={data}
+                    onChangeText={text => setData(text)}
+                    left={<TextInput.Icon name="calendar" />}
+                />
+                <Input
+                    label="Preço"
+                    value={preco}
+                    onChangeText={text => setPreco(text)}
+                    left={<TextInput.Icon name="currency-brl" />}
+                />
+                <Input
+                    label="Valor"
+                    value={valor}
+                    onChangeText={text => setValor(text)}
+                    left={<TextInput.Icon name="currency-brl" />}
+                />
+                <Input
+                    label="Odomêtro"
+                    value={odometro}
+                    onChangeText={text => setOdometro(text)}
+                    left={<TextInput.Icon name="speedometer" />}
+                />  
+                <Button 
+                    icon="content-save" 
+                    mode="contained" 
+                    color={'green'}
+                    style={styles.button}
+                    onPress={handleSave}>
+                    Salvar
+                </Button>
+                <Button 
+                    icon="delete" 
+                    mode="contained" 
+                    color={'red'}
+                    style={styles.button}
+                    onPress={handleDelete}>
+                    Excluir
+                </Button>
             </Body>
         </Container>
     );
@@ -59,6 +113,9 @@ const styles = StyleSheet.create({
         justifyContent: 'space-evenly'
 
     },
+    button: {
+        marginBottom: 8,
+    }
 });
 
 
