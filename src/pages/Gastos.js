@@ -45,6 +45,7 @@ const Gastos = () => {
               description={item.odometro + " km"}
               left={props => <List.Icon {...props} color={ item.tipo == 0 ? 'red' : 'green'} icon="gas-station" />}
               right={props => <Text {...props} style={{alignSelf:'center'}} > {item.data}</Text>}
+              onPress={() => navigation.navigate('Abastecimento', {item})}
             />
       );
 

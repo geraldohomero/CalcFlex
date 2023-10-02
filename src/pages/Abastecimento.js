@@ -1,6 +1,9 @@
-import React, { useState } from 'react';
-import { View, StyleSheet, Text } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View, StyleSheet, Text, TouchableOpacity } from 'react-native';
 import { Button, RadioButton, TextInput, Appbar } from 'react-native-paper';
+import DateTimePicker from '@react-native-community/datetimepicker';
+import moment from 'moment';
+
 import Input from '../components/Input';
 import Header from './../components/Header';
 import Container from '../components/Container';
@@ -8,14 +11,30 @@ import Body from '../components/Body';
 
 import { useNavigation } from '@react-navigation/native';
 
-const Abastecimento = () => {
+const Abastecimento = ({route}) => {
 
     const navigation = useNavigation();
+    const {item} = route.params? route.params : {};
+
+    const [date, setDate] = useState(new Date());
+    const [show, setShow] = useState(false);
+
     const [tipo, setTipo] = useState('gas');
     const [preco, setPreco] = useState('');
     const [valor, setValor] = useState('');
     const [odometro, setOdometro] = useState('');
-    const [data, setData] = useState('');
+    const [data, setData] = useState(moment(new Date).format('DD/MM/YYYY'));
+
+    useEffect(() => {
+        if(item){
+            setTipo(item.tipo == 0 ? 'gas' : 'eta');
+            setPreco(item.preco);
+            setValor(item.valor);
+            setOdometro(item.odometro);
+            setData(item.data);
+        }
+    }, [item]);
+
 
     const handleSave = () => {
         console.log('Salvando...');
@@ -30,7 +49,10 @@ const Abastecimento = () => {
             <Header
                 title={'Abastecimento'} goBack={() => navigation.goBack()}>
                 <Appbar.Action icon="content-save" onPress={handleSave} />
+                {
+                item && 
                 <Appbar.Action icon="delete" onPress={handleDelete} />
+                }
                 </Header>
             <Body>
                 <View style={styles.containerRadio}>
@@ -54,12 +76,29 @@ const Abastecimento = () => {
                     </View>
                 </View>
 
+                {show && (
+                    <DateTimePicker
+                        testID="dateTimePicker"
+                        value={date}
+                        mode={'date'}
+                        is24Hour={true}
+                        display="default"
+                        onTouchCancel={() => setShow(false)}
+                        onChange={(event, date) => {
+                            setShow(false);
+                            setData(moment(date).format('DD/MM/YYYY'));
+                        }}
+
+                    />
+                )}
+                <TouchableOpacity onPress={() => setShow(true)}>
                 <Input
                     label="Data"
                     value={data}
-                    onChangeText={text => setData(text)}
                     left={<TextInput.Icon name="calendar" />}
+                    editable={false}
                 />
+                </TouchableOpacity>
                 <Input
                     label="Preço"
                     value={preco}
@@ -81,11 +120,13 @@ const Abastecimento = () => {
                 <Button 
                     icon="content-save" 
                     mode="contained" 
-                    color={'green'}
                     style={styles.button}
                     onPress={handleSave}>
                     Salvar
                 </Button>
+                
+                {
+                    item && 
                 <Button 
                     icon="delete" 
                     mode="contained" 
@@ -94,6 +135,9 @@ const Abastecimento = () => {
                     onPress={handleDelete}>
                     Excluir
                 </Button>
+                }
+
+
             </Body>
         </Container>
     );

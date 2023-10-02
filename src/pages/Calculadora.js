@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
-import { StyleSheet, Text, View, Alert } from 'react-native';
-import { TextInput, Button } from 'react-native-paper';
+import { StyleSheet, Text, Alert } from 'react-native';
+import { Button } from 'react-native-paper';
 
 import Container from './../components/Container';
 import Header from './../components/Header';
@@ -20,9 +20,9 @@ const Calculadora = () => {
     }else{
       let percentual = Math.round((eta / gas) * 100);
       if(percentual < 70){
-        setRes(`${percentual}% Recomenta-se o uso do ETANOL!`);
+        setRes(percentual + '% Recomenta-se o uso do ETANOL!');
       }else{
-        setRes(`${percentual}% Recomenta-se o uso da GASOLINA!`);
+        setRes(percentual + '% Recomenta-se o uso da GASOLINA!');
       }
   }
 }
@@ -36,7 +36,7 @@ const Calculadora = () => {
             value={gas}
             onChangeText={text => setGas(text)}
           />
-            <Input
+          <Input
             label="Preço do Etanol"
             value={eta}
             onChangeText={text => setEta(text)}
@@ -44,10 +44,9 @@ const Calculadora = () => {
           <Button icon="gas-station" mode="contained" onPress={handleCalc}>
             Calcular
           </Button>
-          <Text style={styles.text}> {res}</Text>
+          <Text style={styles.text}>{res}</Text>
         </Body>
-  </Container>
-
+    </Container>
   );
 }
 
@@ -55,7 +54,7 @@ const styles = StyleSheet.create({
   text: {
     textAlign: 'center',
     marginTop: 10,
-    color: '#fff',
+    color: 'black',
   }
 });
 
