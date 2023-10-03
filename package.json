@@ -20,7 +20,8 @@
     "react-native": "0.71.8",
     "react-native-paper": "4.9.2",
     "react-native-web": "~0.18.10",
-    "react-navigation": "^5.0.0"
+    "react-navigation": "^5.0.0",
+    "expo-sqlite": "~11.1.1"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"
