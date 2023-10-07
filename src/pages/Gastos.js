@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { FlatList, View, StyleSheet } from 'react-native';
 import { List, Text, FAB } from 'react-native-paper';
 
 import Header from './../components/Header';
 import Container from '../components/Container';
 import Body from '../components/Body';
+
+import { getGastos, insertGastos } from '../services/GastosServicesDb'
 
 import { useNavigation } from '@react-navigation/native';
 
@@ -38,6 +40,16 @@ const DATA = [
 const Gastos = () => {
 
   const navigation = useNavigation();
+
+  useEffect(() => {
+
+    getGastos().then((dados) => {
+
+      console.log(dados);
+
+    });
+
+  },[]);
 
     const renderItem = ({ item }) => (
           <List.Item style={styles.ListItem}

@@ -4,6 +4,7 @@ const DB_EXEC = Database.getConnection();
 
 export const getGastos = async () => {
     let results = await DB_EXEC('select * from gastos');
+    console.log(results);
     return results.rows._array;
 }
 

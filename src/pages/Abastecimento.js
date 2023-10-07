@@ -28,9 +28,9 @@ const Abastecimento = ({route}) => {
     useEffect(() => {
         if(item){
             setTipo(item.tipo == 0 ? 'gas' : 'eta');
-            setPreco(item.preco);
-            setValor(item.valor);
-            setOdometro(item.odometro);
+            setPreco(item.preco.toFixed(2));
+            setValor(item.valor.toFixed(2));
+            setOdometro(item.odometro.toFixed(0));
             setData(item.data);
         }
     }, [item]);
