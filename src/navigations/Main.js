@@ -16,6 +16,7 @@ const Main = () => {
                 header:()=>null
             }}
             />
+
             <Stack.Screen 
             name="Abastecimento" 
             component={Abastecimento}
