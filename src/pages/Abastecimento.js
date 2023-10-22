@@ -9,7 +9,10 @@ import Header from './../components/Header';
 import Container from '../components/Container';
 import Body from '../components/Body';
 
+import { insertGastos } from '../services/GastosServicesDb'
+
 import { useNavigation } from '@react-navigation/native';
+
 
 const Abastecimento = ({route}) => {
 
@@ -37,12 +40,29 @@ const Abastecimento = ({route}) => {
 
 
     const handleSave = () => {
-        console.log('Salvando...');
-    }
+
+        if(!item){
+
+            insertGastos(
+                {
+                    tipo: tipo == 'gas' ? 0 : 1,
+                    data: data,
+                    preco: preco,
+                    valor: valor,
+                    odometro: odometro,
+
+                }
+            ).then();
+            
+        }
+        
+        navigation.goBack();
+    };
+
 
     const handleDelete = () => {
         console.log('Deletando...');
-    }
+    };
 
     return (
         <Container>
