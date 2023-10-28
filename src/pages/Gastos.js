@@ -43,11 +43,15 @@ const Gastos = () => {
 
   useEffect(() => {
 
-    getGastos().then((dados) => {
+    console.log('iniciando tela');
 
-      console.log(dados);
-
-    });
+    getGastos()
+      .then((dados) => {
+        console.warn(dados);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
 
   },[]);
 
