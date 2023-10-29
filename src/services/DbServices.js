@@ -10,7 +10,7 @@ const Database = {
             tx.executeSql('create table if not exists gastos(id integer primary key not null, tipo int not null, data text not null, preco real not null, odometro real not null);');
         });
 
-    const ExecuteQuery = (sql, params = []) => new Promise((resolve, reject) => {
+    const ExecuteQuery = (sql, params = []) =>
         new Promise((resolve, reject) => {
             db.transaction((trans) => {
                 trans.executeSql(
@@ -25,7 +25,7 @@ const Database = {
                 );
             });
         });
-    });
+
     return ExecuteQuery;
     },
 };

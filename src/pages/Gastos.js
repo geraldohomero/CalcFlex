@@ -45,9 +45,21 @@ const Gastos = () => {
 
     console.log('iniciando tela');
 
+    insertGastos(
+    { 
+      tipo: 0, 
+      data: '2020-02-01', 
+      preco: 4.77, 
+      odometro: 22234,
+      valor: 100
+    }
+    ).then((dados) => {
+        console.log(dados);
+      })
+
     getGastos()
       .then((dados) => {
-        console.warn(dados);
+        console.log(dados);
       })
       .catch((error) => {
         console.log(error);
