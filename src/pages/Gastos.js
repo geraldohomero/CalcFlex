@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FlatList, View, StyleSheet } from 'react-native';
 import { List, Text, FAB } from 'react-native-paper';
 
@@ -10,66 +10,21 @@ import { getGastos, insertGastos } from '../services/GastosServicesDb'
 
 import { useNavigation } from '@react-navigation/native';
 
-const DATA = [
-    {
-      id: 1,
-      tipo: 0,
-      preco: 4.77,
-      data: '01/02/2023',
-      valor: 100,
-      odometro: 22234,
-    },
-    {
-      id: 2,
-      tipo: 1,
-      preco: 4.57,
-      data: '23/02/2023',
-      valor: 167,
-      odometro: 22876,
-    },
-    {
-      id: 3,
-      tipo: 0,
-      preco: 4.65,
-      data: '26/04/2023',
-      valor: 200,
-      odometro: 23786,
-    },
-  ];
-
 const Gastos = () => {
 
   const navigation = useNavigation();
 
+  const [gastos, setGastos] = useState([]);
+
   useEffect(() => {
-
-    console.log('iniciando tela');
-
-    insertGastos(
-    { 
-      tipo: 0, 
-      data: '2020-02-01', 
-      preco: 4.77, 
-      odometro: 22234,
-      valor: 100
-    }
-    ).then((dados) => {
-        console.log(dados);
-      })
-
-    getGastos()
-      .then((dados) => {
-        console.log(dados);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-
+    getGastos().then((dados)=>{
+      setGastos(dados);
+    });
   },[]);
 
     const renderItem = ({ item }) => (
           <List.Item style={styles.ListItem}
-              title={"R$ " + item.valor.toFixed(2) + " (R$" + item.preco.toFixed(2)+")"}
+              title={"R$ " + item.valor + " (R$" + item.preco.toFixed(2)+")"}
               description={item.odometro + " km"}
               left={props => <List.Icon {...props} color={ item.tipo == 0 ? 'red' : 'green'} icon="gas-station" />}
               right={props => <Text {...props} style={{alignSelf:'center'}} > {item.data}</Text>}
@@ -82,7 +37,7 @@ const Gastos = () => {
             <Header title={'Fuel Manager'}/>
             <Body>
             <FlatList
-              data={DATA}
+              data={gastos}
               renderItem={renderItem}
               keyExtractor={item => item.id}
             />

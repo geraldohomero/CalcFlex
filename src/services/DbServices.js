@@ -7,7 +7,7 @@ const Database = {
         const db = SQLite.openDatabase('fuel_manager.db');
 
         db.transaction((tx) =>{
-            tx.executeSql('create table if not exists gastos(id integer primary key not null, tipo int not null, data text not null, preco real not null, odometro real not null);');
+            tx.executeSql('create table if not exists gastos (id integer primary key not null, tipo int not null, data text not null, preco real not null, valor real not null, odometro real not null);');
         });
 
     const ExecuteQuery = (sql, params = []) =>
@@ -24,10 +24,10 @@ const Database = {
                     }
                 );
             });
-        });
+        })
 
     return ExecuteQuery;
-    },
-};
+    }
+}
 
 export default Database;

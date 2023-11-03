@@ -13,6 +13,7 @@
     "@react-navigation/native": "^6.1.8",
     "@react-navigation/stack": "^6.0.11",
     "expo": "~48.0.18",
+    "expo-sqlite": "~11.1.1",
     "expo-status-bar": "~1.4.4",
     "moment": "^2.29.4",
     "react": "18.2.0",
@@ -20,8 +21,7 @@
     "react-native": "0.71.14",
     "react-native-paper": "4.9.2",
     "react-native-web": "~0.18.10",
-    "react-navigation": "^5.0.0",
-    "expo-sqlite": "~11.1.1"
+    "react-navigation": "^5.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"

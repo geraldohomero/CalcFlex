@@ -10,11 +10,15 @@ import Container from '../components/Container';
 import Body from '../components/Body';
 
 import { useNavigation } from '@react-navigation/native';
-
+import {
+    insertGastos,
+    updateGastos,
+    deleteGastos,
+  } from '../services/GastosServicesDb';
 const Abastecimento = ({route}) => {
 
     const navigation = useNavigation();
-    const {item} = route.params? route.params : {};
+    const {item} = route.params ? route.params : {};
 
     const [date, setDate] = useState(new Date());
     const [show, setShow] = useState(false);
@@ -29,20 +33,42 @@ const Abastecimento = ({route}) => {
         if(item){
             setTipo(item.tipo == 0 ? 'gas' : 'eta');
             setPreco(item.preco.toFixed(2));
-            setValor(item.valor.toFixed(2));
+            setValor(item.valor);
             setOdometro(item.odometro.toFixed(0));
             setData(item.data);
         }
     }, [item]);
 
 
-    const handleSave = () => {
-        console.log('Salvando...');
-    }
+    const handleSave  = () => {
+        if (item) {
+          updateGastos({
+            tipo: tipo == 'gas' ? 0 : 1,
+            data: data,
+            preco: preco,
+            valor: valor,
+            odometro: odometro,
+            id: item.id
+          }).then();
+        } else {
+          insertGastos({
+            tipo: tipo == 'gas' ? 0 : 1,
+            data: data,
+            preco: preco,
+            valor: valor,
+            odometro: odometro
+          }).then();
+        }
+    
+        navigation.goBack();
+      };
+    
 
-    const handleDelete = () => {
-        console.log('Deletando...');
-    }
+      const handleDelete = () => {
+        deleteGastos(item.id).then();
+        navigation.goBack();
+      };
+    
 
     return (
         <Container>
