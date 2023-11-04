@@ -17,6 +17,7 @@ const Gastos = () => {
   const [gastos, setGastos] = useState([]);
 
   useEffect(() => {
+    
     getGastos().then((dados)=>{
       setGastos(dados);
     });
@@ -24,7 +25,7 @@ const Gastos = () => {
 
     const renderItem = ({ item }) => (
           <List.Item style={styles.ListItem}
-              title={"R$ " + item.valor + " (R$" + item.preco.toFixed(2)+")"}
+              title={"R$ " + item.valor.toFixed(2) + " (R$" + item.preco.toFixed(2)+")"}
               description={item.odometro + " km"}
               left={props => <List.Icon {...props} color={ item.tipo == 0 ? 'red' : 'green'} icon="gas-station" />}
               right={props => <Text {...props} style={{alignSelf:'center'}} > {item.data}</Text>}

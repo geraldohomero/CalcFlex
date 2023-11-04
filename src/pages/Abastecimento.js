@@ -33,7 +33,7 @@ const Abastecimento = ({route}) => {
         if(item){
             setTipo(item.tipo == 0 ? 'gas' : 'eta');
             setPreco(item.preco.toFixed(2));
-            setValor(item.valor);
+            setValor(item.valor.toFixed(2));
             setOdometro(item.odometro.toFixed(0));
             setData(item.data);
         }
@@ -54,8 +54,8 @@ const Abastecimento = ({route}) => {
           insertGastos({
             tipo: tipo == 'gas' ? 0 : 1,
             data: data,
-            preco: preco,
             valor: valor,
+            preco: preco,
             odometro: odometro
           }).then();
         }
