@@ -1,0 +1,26 @@
+### USERS
+GET http://[::1]:3000/users
+
+
+### REGISTER
+POST http://[::1]:3000/register
+content-type: application/json
+
+{
+    "name": "Geraldo Homero",
+    "email": "geraldohomero@email.com",
+    "password": "123456"
+}
+
+### LOGIN
+POST http://[::1]:3000/login
+content-type: application/json
+
+{
+    "email": "geraldohomero@email.com",
+    "password": "123456"
+}
+
+### DELETE USER
+DELETE http://[::1]:3000/users/1
+Content-Type: application/json

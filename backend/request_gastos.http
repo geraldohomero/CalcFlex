@@ -3,7 +3,7 @@ GET http://[::1]:3000/gastos
 
 
 ### CREATE
-POST http://localhost:3000/gastos
+POST http://[::1]:3000/gastos
 content-type: application/json
 
 {
@@ -15,7 +15,7 @@ content-type: application/json
 }
 
 ### UPDATE
-PUT http://localhost:3000/gastos/3
+PUT http://[::1]:3000/gastos/3
 content-type: application/json
 
 {
@@ -28,7 +28,7 @@ content-type: application/json
 
 
 ### GET GASTO
-GET http://localhost:3000/gastos/3
+GET http://[::1]:3000/gastos/3
 
 ### DELETE GASTO
-DELETE http://localhost:3000/gastos/3
+DELETE http://[::1]:3000/gastos/3

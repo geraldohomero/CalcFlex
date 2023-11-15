@@ -1,0 +1,58 @@
+@TOKEN=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImdlcmFsZG9ob21lcm9AZW1haWwuY29tIiwiaWF0IjoxNzAwMDg4MjQyLCJleHAiOjE3MDAwOTE4NDIsInN1YiI6IjEifQ.I3DxA8fC8ikCDXdpE-HKXvseow5vbOzdqj7wKOaXTBM
+### LOGIN
+POST http://[::1]:3000/login
+content-type: application/json
+
+{
+  "email": "klebersouza@pucminas.br",
+  "password":"pucminas"
+}
+
+
+### GASTOS
+GET http://[::1]:3000/660/gastos
+Authorization: Bearer {{TOKEN}}
+
+### CREATE
+POST http://[::1]:3000/660/gastos
+content-type: application/json
+Authorization: Bearer {{TOKEN}}
+
+{
+  "tipo": 0,
+  "data": "15/01/2022",
+  "preco": 7.77,
+  "valor": 150.00,
+  "odometro": 35000
+}
+
+### UPDATE
+PUT http://[::1]:3000/660/gastos/3
+content-type: application/json
+Authorization: Bearer {{TOKEN}}
+
+{
+  "tipo": 1,
+  "data": "10/01/2022",
+  "preco": 7.5,
+  "valor": 130.00,
+  "odometro": 34000
+}
+
+
+### GET GASTO
+GET http://[::1]:3000/660/gastos/3
+Authorization: Bearer {{TOKEN}}
+
+### DELETE GASTO
+DELETE http://[::1]:3000/660/gastos/3
+Authorization: Bearer {{TOKEN}}
+### CREATE
+POST http://[::1]:3000/register
+content-type: application/json
+
+{
+    "name": "Geraldo Homero",
+    "email": "geraldohomero@email.com",
+    "password": "123456"
+}

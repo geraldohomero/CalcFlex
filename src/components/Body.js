@@ -10,6 +10,7 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#fff',
         margin : 10,
+        marginTop: 30,
       },
 });
 
