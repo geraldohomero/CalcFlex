@@ -1,0 +1,21 @@
+{
+    "users": [],
+    "gastos": [
+        {
+            "id": 1,
+            "tipo": 0,
+            "data": "01/09/2023",
+            "valor": 120,
+            "preco": 5.78,
+            "odometro": 1000
+        },
+        {
+            "id": 2,
+            "tipo": 1,
+            "data": "11/09/2023",
+            "valor": 100,
+            "preco": 5.67,
+            "odometro": 1231
+        }
+    ]
+}
