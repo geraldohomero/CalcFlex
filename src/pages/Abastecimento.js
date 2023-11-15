@@ -60,7 +60,7 @@ const Abastecimento = ({route}) => {
           }).then();
         }
     
-        navigation.goBack();
+        navigation.goBack(); //volta para a tela anterior
       };
     
 

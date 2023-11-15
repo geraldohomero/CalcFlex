@@ -23,6 +23,13 @@ export const insertGastos = async (params) => {
     }
 }
 
+export const updateGastos = async (params) => {
+    let results = await DB_EXEC('update gastos set tipo=?, data=?, preco=?, valor=?, odometro=? where id=?', 
+    [params.tipo, params.data, params.preco, params.valor, params.odometro, params.id]);
+    console.log(results);
+    return results.rowsAffected;
+}
+
 export const deleteGastos = async (id) => {
     let results = await DB_EXEC(`delete from gastos where id=?`, [id]);
     //console.log(results);

@@ -6,13 +6,15 @@ import Header from './../components/Header';
 import Container from '../components/Container';
 import Body from '../components/Body';
 
-import { getGastos, insertGastos } from '../services/GastosServicesDb'
+import { getGastos } from '../services/GastosServicesDb'
 
 import { useNavigation } from '@react-navigation/native';
+import { useIsFocused } from '@react-navigation/native';
 
 const Gastos = () => {
 
   const navigation = useNavigation();
+  const isFocused = useIsFocused();
 
   const [gastos, setGastos] = useState([]);
 
@@ -21,7 +23,7 @@ const Gastos = () => {
     getGastos().then((dados)=>{
       setGastos(dados);
     });
-  },[]);
+  },[isFocused]);
 
     const renderItem = ({ item }) => (
           <List.Item style={styles.ListItem}
