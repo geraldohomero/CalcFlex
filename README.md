@@ -1,18 +1,16 @@
-# App *Calculadora Flex*
+# App _Calculadora Flex_
 
->Feito em React Native com SQLite e JSON Server
+> Feito em React Native com SQLite e JSON Server
 
 - Calculadora para saber qual valor é mais atrativo entre Gasolina e Etanol
 
-- Registro de abastecimentos 
+- Registro de abastecimentos
 
 ![calcFlex1](https://github.com/geraldohomero/CalcFlex/assets/70844369/5282cf1a-ee09-45bf-99d9-496d3ee70d68)
-
 
 ## Instalação
 
 Linux, OS X & Windows:
-
 
 ```sh
 npm install --force
@@ -38,4 +36,3 @@ Para rodar o JSON Server, é necessário ter o NodeJS instalado na máquina. Ap�
 ```sh
 json-server-auth db.json
 ```
-
